@@ -7,31 +7,14 @@ class Init
   def main_menu
     puts "\tPrint \"q\" to exit\n"
 
-    except = Except.new
+    value = take_temperature
+    return value if exit?(value)
 
-    loop do
-      value = take_temperature
-      return value if exit?(value)
-      break if except.number?(value)
+    value = take_scale_from
+    return value if exit?(value)
 
-      puts "\t***Temperature is not correct, try again (must be a number)***"
-    end
-
-    loop do
-      value = take_scale_from
-      return value if exit?(value)
-      break if except.scale?(value)
-
-      puts "\t***Scale type \"from\" is not correct, try again (must be a single character C, K, F)***"
-    end
-
-    loop do
-      value = take_scale_to
-      return value if exit?(value)
-      break if except.scale?(value)
-
-      puts "\t***Scale type \"to\" is not correct, try again (must be a single character C, K, F)***"
-    end
+    value = take_scale_to
+    return value if exit?(value)
   end
 
   def exit?(value)
@@ -54,17 +37,44 @@ class Init
   private
 
   def take_temperature
-    puts 'Enter temperature: '
-    @temperature_value = gets.chomp
+    except = Except.new
+    loop do
+      puts 'Enter temperature: '
+      @value = gets.chomp
+      return @value if exit?(@value)
+      break if except.number?(@value)
+
+      puts "\t***Temperature is not correct, try again (must be a number)***"
+    end
+
+    @temperature_value = @value
   end
 
   def take_scale_from
-    puts 'Enter scale type from (C, K, F): '
-    @scale_from = gets.chomp
+    except = Except.new
+    loop do
+      puts 'Enter scale type from (C, K, F): '
+      @value = gets.chomp
+      return @value if exit?(@value)
+      break if except.scale?(@value)
+
+      puts "\t***Scale type \"from\" is not correct, try again (must be a single character C, K, F)***"
+    end
+
+    @scale_from = @value
   end
 
   def take_scale_to
-    puts 'Enter scale type to (C, K, F): '
-    @scale_to = gets.chomp
+    except = Except.new
+    loop do
+      puts 'Enter scale type to (C, K, F): '
+      @value = gets.chomp
+      return @value if exit?(@value)
+      break if except.scale?(@value)
+
+      puts "\t***Scale type \"to\" is not correct, try again (must be a single character C, K, F)***"
+    end
+
+    @scale_to = @value
   end
 end
