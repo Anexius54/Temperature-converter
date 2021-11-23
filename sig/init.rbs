@@ -1,0 +1,12 @@
+class Init
+  attr_accessor temperature_value: String
+  attr_accessor scale_from: String
+  attr_accessor scale_to: String
+
+  def main_menu: -> String
+  def exit?: (String value) -> (TrueClass | FalseClass | NilClass)
+  def convert: -> String
+  def take_temperature: -> String
+  def take_scale_from: -> String
+  def take_scale_to: -> String
+end
