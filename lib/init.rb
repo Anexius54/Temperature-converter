@@ -12,31 +12,25 @@ class Init
     loop do
       value = take_temperature
       return value if exit?(value)
-      if except.number?(value)
-        break
-      else
-        puts "\t***Temperature is not correct, try again (must be a number)***"
-      end
+      break if except.number?(value)
+
+      puts "\t***Temperature is not correct, try again (must be a number)***"
     end
 
     loop do
       value = take_scale_from
       return value if exit?(value)
-      if except.scale?(value)
-        break
-      else
-        puts "\t***Scale type \"from\" is not correct, try again (must be a single character C, K, F)***"
-      end
+      break if except.scale?(value)
+
+      puts "\t***Scale type \"from\" is not correct, try again (must be a single character C, K, F)***"
     end
 
     loop do
       value = take_scale_to
       return value if exit?(value)
-      if except.scale?(value)
-        break
-      else
-        puts "\t***Scale type \"to\" is not correct, try again (must be a single character C, K, F)***"
-      end
+      break if except.scale?(value)
+
+      puts "\t***Scale type \"to\" is not correct, try again (must be a single character C, K, F)***"
     end
   end
 
