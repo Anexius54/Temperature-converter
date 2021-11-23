@@ -40,7 +40,7 @@ class Init
     except = Except.new
     loop do
       puts 'Enter temperature: '
-      @value = gets.chomp
+      @value = gets.to_s.chomp
       return @value if exit?(@value)
       break if except.number?(@value)
 
@@ -54,7 +54,7 @@ class Init
     except = Except.new
     loop do
       puts 'Enter scale type from (C, K, F): '
-      @value = gets.chomp
+      @value = gets.to_s.chomp
       return @value if exit?(@value)
       break if except.scale?(@value)
 
@@ -68,7 +68,7 @@ class Init
     except = Except.new
     loop do
       puts 'Enter scale type to (C, K, F): '
-      @value = gets.chomp
+      @value = gets.to_s.chomp
       return @value if exit?(@value)
       break if except.scale?(@value)
 
