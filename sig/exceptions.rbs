@@ -1,4 +1,4 @@
 class Except
-  def number?: (String value) -> (TrueClass | FalseClass)
-  def scale?: (String value) -> (TrueClass | FalseClass)
+  def number?: (String value) -> (TrueClass | FalseClass | NilClass)
+  def scale?: (String value) -> (TrueClass | FalseClass | NilClass)
 end
