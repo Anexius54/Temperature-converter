@@ -44,7 +44,7 @@ class Init
   def take_temperature
     except = Except.new
     puts 'Enter temperature: '
-    value = gets.chomp
+    value = gets.to_s.chomp
     return value if exit?(value)
 
     unless except.number?(value)
@@ -53,13 +53,13 @@ class Init
 
     end
 
-    @temperature_value = value
+    @temperature_value = value.to_f
   end
 
   def take_scale_from
     except = Except.new
     puts 'Enter scale type from (C, K, F): '
-    value = gets.chomp
+    value = gets.to_s.chomp
     return value if exit?(value)
 
     unless except.scale?(value)
@@ -74,7 +74,7 @@ class Init
   def take_scale_to
     except = Except.new
     puts 'Enter scale type to (C, K, F): '
-    value = gets.chomp
+    value = gets.to_s.chomp
     return value if exit?(value)
 
     unless except.scale?(value)

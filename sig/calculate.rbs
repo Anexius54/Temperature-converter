@@ -1,6 +1,0 @@
-class Calculate
-  def initialize: (Float temperature_value, String scale) -> void
-  def convert_to_c: -> ::Float
-  def convert_to_f: -> ::Float
-  def convert_to_k: -> ::Float
-end
