@@ -40,7 +40,6 @@ class Init
     end
   end
 
-  private
 
   def take_temperature
     except = Except.new
