@@ -40,7 +40,6 @@ class Init
     end
   end
 
-
   def take_temperature
     except = Except.new
     puts 'Enter temperature: '
