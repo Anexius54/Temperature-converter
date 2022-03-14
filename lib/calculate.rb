@@ -1,5 +1,6 @@
 class Calculate
   attr_accessor :temperature_value
+  attr_reader :scale
 
   def initialize(temperature_value, scale)
     @temperature_value = temperature_value.to_f

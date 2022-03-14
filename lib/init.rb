@@ -4,6 +4,12 @@ require './lib/exceptions'
 class Init
   attr_accessor :temperature_value, :scale_from, :scale_to
 
+  attr_reader :f_exit
+
+  def initialize
+    @f_exit = 'q'
+  end
+
   def main_menu
     puts "\tPrint \"q\" to exit\n"
 
@@ -38,43 +44,46 @@ class Init
 
   def take_temperature
     except = Except.new
-    loop do
-      puts 'Enter temperature: '
-      @value = gets.to_s.chomp
-      return @value if exit?(@value)
-      break if except.number?(@value)
+    puts 'Enter temperature: '
+    value = gets.chomp
+    return value if exit?(value)
 
-      puts "\t***Temperature is not correct, try again (must be a number)***"
+    unless except.number?(value)
+      puts "\t***Scale type \"from\" is not correct, try again (must be a single character C, K, F)***"
+      value = @f_exit
+
     end
 
-    @temperature_value = @value
+    @temperature_value = value
   end
 
   def take_scale_from
     except = Except.new
-    loop do
-      puts 'Enter scale type from (C, K, F): '
-      @value = gets.to_s.chomp
-      return @value if exit?(@value)
-      break if except.scale?(@value)
+    puts 'Enter scale type from (C, K, F): '
+    value = gets.chomp
+    return value if exit?(value)
 
+    unless except.scale?(value)
       puts "\t***Scale type \"from\" is not correct, try again (must be a single character C, K, F)***"
+      value = @f_exit
+
     end
 
-    @scale_from = @value
+    @scale_from = value
   end
 
   def take_scale_to
     except = Except.new
-    loop do
-      puts 'Enter scale type to (C, K, F): '
-      @value = gets.to_s.chomp
-      return @value if exit?(@value)
-      break if except.scale?(@value)
+    puts 'Enter scale type to (C, K, F): '
+    value = gets.chomp
+    return value if exit?(value)
 
+    unless except.scale?(value)
       puts "\t***Scale type \"to\" is not correct, try again (must be a single character C, K, F)***"
+      value = @f_exit
+
     end
 
-    @scale_to = @value
+    @scale_to = value
   end
 end

@@ -3,7 +3,7 @@ class Init
   attr_accessor scale_from: String
   attr_accessor scale_to: String
 
-  def main_menu: -> String
+  def main_menu: -> (String | NilClass)
   def exit?: (String value) -> (TrueClass | FalseClass | NilClass)
   def convert: -> String
   def take_temperature: -> String
